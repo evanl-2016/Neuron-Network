@@ -4,13 +4,15 @@ import math
 import random
 from PIL import Image
 
-image = Image.open(r"D:\pycharm projects\Neuron-Network\images\cat1.jpg")
+#More comments pls
+
+image = Image.open(r"D:\pycharm projects\Neuron-Network\images\cat1.jpg") #portability? dataset?
 pixels = image.load()
 
 
 class Neuron:
     def __init__(self, value, bias):
-        self.value = value
+        self.value = value #clarity of variable names
         self.bias = bias
 
     def forward_pass(self):
@@ -25,6 +27,10 @@ class Neuron_layer:
     def Softmax(self, outputs):
         divider = sum([math.e ** i for i in outputs])
         return [math.e ** i / divider for i in outputs]
+
+    #def derivativeSoftmax: ...
+
+    #def Cost:... and dervaive function
 
     def ReLU(self):
         num = np.dot(self.inputs, self.weights)
@@ -47,7 +53,7 @@ input_pixels = []
 for row in range(640):
     for col in range(426):
         input_pixels.append(pixels[row, col])
-input_pixels = [i / 100 for tup in input_pixels for i in tup]
+input_pixels = [i / 100 for tup in input_pixels for i in tup] #Other normalisation methods?
 input_neurons = len(input_pixels)
 for i in range(100):
     Input_layer = Neuron_layer(input_pixels, [random.uniform(-1, 0.5) for i in range(input_neurons)])
